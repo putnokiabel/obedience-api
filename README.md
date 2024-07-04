@@ -9,6 +9,7 @@ To start, your extension needs to request the Obedience user's permission to con
 
 You can request the user's permission by sending them to `https://app.obedienceapp.com/home/extension-request?id=YOUR_ID&name=YOUR_EXTENSION_NAME&redirect=YOUR_REDIRECT_URL`,
 where `YOUR_EXTENSION_ID` is a valid V4 UUID that is unique across the app (each extension must use a different ID for each Obedience user), `YOUR_EXTENSION_NAME` is the name of your extension that appears to the user, and `YOUR_REDIRECT_URL` is the URL where the user will be redirected after accepting the request.
+`YOUR_REDIRECT_URL` must be a fully qualified URL (e.g. starting with `https://`).
 
 When the user accepts the request, they will be redirected to `YOUR_REDIRECT_URL` with the following query parameters:
 - `id`: same as `YOUR_EXTENSION_ID`,
