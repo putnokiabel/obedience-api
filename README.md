@@ -62,3 +62,19 @@ where `type` is either `habit`, `reward` or `punishment`, and `ObjectData` has t
 `id` is the ID of the object that changed, `owner` is the ID of the submissive who owns the habit and `partner` is the ID of the dominant partner (if applicable).
 
 Note that for each webhook event emitted, there is a timeout of 10 seconds. Your webhook endpoint must therefore process the incoming POST request within 10 seconds. If you need more time, consider using a background job after the webhook event is received.
+
+
+## Requesting Obedience data
+In addition to webhooks (set up via `https://app.obedienceapp.com/extensions/webhook`), you can also actively request Obedience data using a GET request on the following endpoints:
+- `https://app.obedienceapp.com/extensions/habits`
+- `https://app.obedienceapp.com/extensions/rewards`
+- `https://app.obedienceapp.com/extensions/punishments`
+
+In your GET request, you need to provide the following URL parameters:
+- `extensionId`(string): your extension ID
+- `secret`(string): your extension secret
+- `id`(string): the ID of the document you want to fetch (optional)
+
+If `id` is provided, you will receive a JSON response with the `ObjectData` format (see Webhooks) representing the object you've requested. If the object with the given ID does not exist, you'll receive a 404 response.
+
+If `id` is not provided, you will receive a JSON response with a list of `ObjectData` representing all the objects the user has access to.
