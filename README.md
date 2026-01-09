@@ -61,10 +61,22 @@ where `type` is either `habit`, `reward`, `punishment` or `relationship`, and `O
   "amount": int,
   "positive": boolean,
   "goal": int,
-  "rewards": List,
-  "punishments": List,
+  "rewards": [HabitAction],
+  "punishments": [HabitAction],
 }
 ```
+
+where `HabitAction` has the following format:
+```
+{
+  "id": string,
+  "type": string,
+  "condition": int,
+  "amount": int
+}
+```
+
+where `id` is the ID of the reward or punishment (or alternatively "lose_points" or "gain_points") and `type` is either `<` (applied if habit amount is less than `condition`), `>` (applied if habit amount is greater than `condition`), or `!` (applied for every count the habit was completed).
 
 ### Rewards
 ```
