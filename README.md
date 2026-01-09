@@ -59,6 +59,10 @@ where `type` is either `habit`, `reward`, `punishment` or `relationship`, and `O
   "name": string,
   "description": string,
   "amount": int,
+  "positive": boolean,
+  "goal": int,
+  "rewards": List,
+  "punishments": List,
 }
 ```
 
